@@ -18,9 +18,33 @@ namespace Main.API.Controllers
             _mediator = mediator;
         }
 
+        [HttpGet]
+        [Route("Get/{request}")]
+        public async Task<IActionResult> Get(int request)
+        {
+            var result = await _mediator.Send(new UserGetCommand(request), CancellationToken.None);
+            return await ValidationHandler(result);
+        }
+
+        [HttpGet]
+        [Route("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _mediator.Send(new UserGetAllCommand(), CancellationToken.None);
+            return await ValidationHandler(result);
+        }
+
         [HttpPost]
         [Route("Create")]
         public async Task<IActionResult> Create(UserCreateCommand request)
+        {
+            var result = await _mediator.Send(request, CancellationToken.None);
+            return await ValidationHandler(result);
+        }
+
+        [HttpPost]
+        [Route("Update")]
+        public async Task<IActionResult> Update(UserUpdateCommand request)
         {
             var result = await _mediator.Send(request, CancellationToken.None);
             return await ValidationHandler(result);

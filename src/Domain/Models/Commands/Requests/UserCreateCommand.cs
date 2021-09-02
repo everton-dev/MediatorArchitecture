@@ -7,14 +7,14 @@ namespace Domain.Models.Commands.Requests
 {
     public class UserCreateCommand : ValidateCommand, IRequest<UserResponse>
     {
-        public short TypeDocument { get; private set; }
-        public string DocumentNumber { get; private set; }
-        public string InitialName { get; private set; }
-        public string MiddleName { get; private set; }
-        public string LastName { get; private set; }
-        public DateTime DateBirth { get; private set; }
-        public string Email { get; private set; }
-        public string UserEntry { get; private set; }
+        public short TypeDocument { get; set; }
+        public string DocumentNumber { get; set; }
+        public string InitialName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public DateTime DateBirth { get; set; }
+        public string Email { get; set; }
+        public string UserEntry { get; set; }
 
         public UserCreateCommand(short typeDocument, string documentNumber, string initialName, string middleName, string lastName, DateTime dateBirth, string email, string userEntry)
         {
